@@ -1,6 +1,8 @@
 package com.cheap.stepdefinition;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
+
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import com.cheap.base.BaseClass;
@@ -8,6 +10,7 @@ import com.cheap.locators.Locators;
 import com.fasterxml.jackson.databind.deser.Deserializers.Base;
 
 import java.sql.Driver;
+import java.util.concurrent.ConcurrentHashMap.KeySetView;
 
 import javax.swing.border.TitledBorder;
 
@@ -183,7 +186,8 @@ public class StepDefinition extends Locators{
 	public void entering_words_in_from_field_shows_suggestion_relevent_to_the_input(String Coimb) {
 		BaseClass.Clickactions(getFlight());
 	    BaseClass.Clickactions(getDoubleTrip());
-	    getFromWhere().clear();
+	    selectAll(getFromWhere());
+	    Delete(getFromWhere());
 	    BaseClass.Input(getFromWhere(), Coimb);
 	}
 

@@ -63,5 +63,5 @@ Scenario: Validating if it is able to select the Number of Travellers Field
 		Then Validating is Number of Travellers Field got Selected
 
 Scenario: Entring Words in From Where Field shows Sugestion List
-		Given Entering Words in From Field shows Suggestion Relevent to the input "Coim"
-		# Then Coimbatore is Listed in the Suggestion list
+		Given Entering Words in From Field shows Suggestion Relevent to the input "Chennai"
+		#Then Coimbatore is Listed in the Suggestion list

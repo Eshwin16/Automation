@@ -16,6 +16,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -177,4 +178,13 @@ public class BaseClass {
 		return (driver.switchTo().activeElement());
 	}
 	
+	public static void selectAll(WebElement element)
+	{
+	    String selectAll = Keys.chord(Keys.CONTROL, "a");
+	    element.sendKeys(selectAll);
+	}
+	public static void Delete(WebElement element)
+	{
+		element.sendKeys(Keys.DELETE);
+	}
 }
