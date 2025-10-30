@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Properties;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -88,48 +89,7 @@ public class BaseClass {
 		String url=driver.getCurrentUrl();
 		return url;
 	}
-	public static String getCellType(String Sheet,int rowNum, int colNum)
-	{
-		String res=null;
-		File F=new File("src\\test\\resources\\TestData\\Hotel_Inputs.xlsx");
-		try
-		{
-			FileInputStream fis=new FileInputStream(F);
-			Workbook wb=new XSSFWorkbook(fis);
-			Sheet sheet=wb.getSheet(Sheet);
-			Row row=sheet.getRow(rowNum);
-			Cell cell=row.getCell(colNum);
-			int cellType=cell.getCellType();
-			if(cellType==Cell.CELL_TYPE_STRING)
-			{
-				res=cell.getStringCellValue();
-			}
-			else if(cellType==0)
-			{
-				if(DateUtil.isCellDateFormatted(cell))
-				{
-					Date dateCellValue=cell.getDateCellValue();
-					SimpleDateFormat sm=new SimpleDateFormat("dd/mm/yy");
-					res=sm.format(dateCellValue);
-				}
-				else
-				{
-					double numericCellValue=cell.getNumericCellValue();
-					long l=(long)numericCellValue;
-					res=String.valueOf(l);
-				}
-			}
-		}
-			catch (FileNotFoundException e)
-			{
-				e.printStackTrace();
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
-		return res;
-	}
+	
 	public static String read_props(String key)
 	{
 		String propvalue=null;
