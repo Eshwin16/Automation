@@ -6,6 +6,7 @@ Feature: Chennai to Coimbatore OneWay
 ## Validating if the Tabs are Selecteable
 ## Validating if the Radio Button under the Tab is Selectable
 
+@tag1
 
 Scenario: Validating if the Valid URL is Loaded
 	Given Launch Chrome Browser and Load the URL "https://www.cheapair.com/"
