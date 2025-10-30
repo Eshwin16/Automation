@@ -16,6 +16,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -74,8 +75,6 @@ public class BaseClass {
 	{
 		WebDriverWait wait= new WebDriverWait(driver, 30);
 		WebElement elementFound=wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-		String OrderID=elementFound.getAttribute("value");
-		System.out.println("OrderID found is..."+OrderID);
 	}
 	public static void WaitTillInvisible(String data)
 	{
@@ -160,6 +159,10 @@ public class BaseClass {
 	{
 		return driver.findElement(By.id(id));
 	}
+	public static WebElement ByXpath(String Xpath)
+	{
+		return driver.findElement(By.xpath(Xpath));
+	}
 	public static String cls(WebElement element)
 	{
 		return element.getAttribute("class");
@@ -186,5 +189,32 @@ public class BaseClass {
 	public static void Delete(WebElement element)
 	{
 		element.sendKeys(Keys.DELETE);
+	}
+	public static void InputJS(WebElement element,String Data)
+	{		JavascriptExecutor js=(JavascriptExecutor) driver;
+		js.executeScript("arguments[0].value = '" + Data + "';", element);
+		try {
+			BaseClass.wait(500); // Wait 500 milliseconds (adjust as needed)
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			System.out.println("Wait interrupted.");
+		}
+	}
+	public static void trigger(WebElement element)
+	{
+		JavascriptExecutor js1=(JavascriptExecutor)driver;
+		js1.executeScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", element);
+		
+		
+	}
+	public static void Enter(WebElement element)
+	{
+		element.sendKeys(Keys.ENTER);
+	}
+	public static void ClickJs(WebElement element)
+	{
+		JavascriptExecutor js2=(JavascriptExecutor)driver;
+		js2.executeScript("arguments[0].click()", element);
+		
 	}
 }

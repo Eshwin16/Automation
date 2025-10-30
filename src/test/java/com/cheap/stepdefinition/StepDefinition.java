@@ -183,18 +183,40 @@ public class StepDefinition extends Locators{
 	}
 	
 	@Given("Entering Words in From Field shows Suggestion Relevent to the input {string}")
-	public void entering_words_in_from_field_shows_suggestion_relevent_to_the_input(String Coimb) {
+	public void entering_words_in_from_field_shows_suggestion_relevent_to_the_input(String Coimb) throws InterruptedException {
 		BaseClass.Clickactions(getFlight());
 	    BaseClass.Clickactions(getDoubleTrip());
 	    selectAll(getFromWhere());
 	    Delete(getFromWhere());
-	    BaseClass.Input(getFromWhere(), Coimb);
+	    BaseClass.InputJS(getFromWhere(), Coimb);
+	    BaseClass.trigger(getFromWhere());
+	    BaseClass.wait(1500);	    
 	}
 
-/*	@Then("Coimbatore is Listed in the Suggestion list")
-	public void coimbatore_is_listed_in_the_suggestion_list() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	} */
+	@Then("Coimbatore is Listed in the Suggestion list {string}")
+	public void coimbatore_is_listed_in_the_suggestion_list(String drop) {
+		//BaseClass.Clickactions(getFromWhereLocation());
+		assertTrue("Option is not Listed in the Drop Down", getFromWhereLocation().isDisplayed());	    
+	}
+	
+	@Given("Able to Click the Drop Down Suggestion {string}")
+	public void able_to_click_the_drop_down_suggestion(String Coimb) throws InterruptedException {
+		//BaseClass.Clickactions(getFlight());
+	    //BaseClass.Clickactions(getDoubleTrip());
+	    //selectAll(getFromWhere());
+	    //Delete(getFromWhere());
+	    //BaseClass.InputJS(getFromWhere(), Coimb);
+	    //BaseClass.trigger(getFromWhere());
+	    //BaseClass.wait(1500);
+	    BaseClass.Clickactions(getFromWhereLocation());
+		}
+	
+	@Then("Option Rendered in the From Where input Field")
+	public void option_rendered_in_the_from_where_input_field() {
+	   assertTrue("CJB is not Selected",InputRenderedFrom().isDisplayed());
+	}
+
+
+
 
 }

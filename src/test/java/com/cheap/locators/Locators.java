@@ -59,5 +59,12 @@ public class Locators extends BaseClass
 	{
 		return BaseClass.ById("travellerButtonFlights");
 	}
-	
+	public static WebElement getFromWhereLocation()
+	{
+		return BaseClass.ByXpath("//li[@data-suggestion='CJB']");
+	}
+	public static WebElement InputRenderedFrom()
+	{
+		return BaseClass.ByXpath("(//*[@class='airport-location-v2-text' and text()='CJB'])[1]");
+	}
 }

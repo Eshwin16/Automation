@@ -64,4 +64,8 @@ Scenario: Validating if it is able to select the Number of Travellers Field
 
 Scenario: Entring Words in From Where Field shows Sugestion List
 		Given Entering Words in From Field shows Suggestion Relevent to the input "Coimbatore"
-		#Then Coimbatore is Listed in the Suggestion list
+		Then Coimbatore is Listed in the Suggestion list "CJB"
+
+Scenario: Ensuring if click action Works fine
+	Given Able to Click the Drop Down Suggestion "Coimbatore"
+	Then Option Rendered in the From Where input Field
