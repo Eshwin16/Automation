@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/YUVARAJSEKAR12/Jenkin_Cucumber.git'
+                git branch: 'main', url: 'https://github.com/Eshwin16/Automation.git'
             }
         }
 
