@@ -100,7 +100,7 @@ public class BaseClass {
 			Row row=sheet.getRow(rowNum);
 			Cell cell=row.getCell(colNum);
 			int cellType=cell.getCellType();
-			if(cellType==1)
+			if(cellType==Cell.CELL_TYPE_STRING)
 			{
 				res=cell.getStringCellValue();
 			}
